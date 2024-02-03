@@ -5,8 +5,8 @@ cloudscraper
     # plugin: cfscraper
 rarfile
     # plugin: decompress
-transmission-rpc<5.0.0
-deluge-client
+transmission-rpc==7.0.3
+deluge-client==1.9.0
 irc-bot
     # plugin: others
-flexget
+flexget==3.11.14

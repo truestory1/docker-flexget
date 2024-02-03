@@ -4,8 +4,7 @@ on:
   pull_request:
 
 env:
-  DOCKERHUB_USER: wiserain
-  IMAGE_NAME: ghcr.io/wiserain/flexget
+  IMAGE_NAME: ghcr.io/truestory1/flexget
   ALPINE_VER: '3.19'
 
 jobs:
@@ -13,22 +12,21 @@ jobs:
     runs-on: ubuntu-22.04
     if: github.event_name == 'pull_request'
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      -
-        name: Compile requirements.txt
+
+      - name: Compile requirements.txt
         run: |
           docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
             sh -c "apk add py3-pip build-base python3-dev libffi-dev && rm /usr/lib/python*/EXTERNALLY-MANAGED && pip install pip-tools && cd /req && pip-compile -U"
-      -
-        name: Set up QEMU
+
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Buildx
+
+      - name: Set up Buildx
         uses: docker/setup-buildx-action@v3
-      -
-        name: Initial Buildx
+
+      - name: Initial Buildx
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -37,19 +35,16 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
-      # 
-      # now only for repository owner
-      # 
-      -
-        name: Login to ghcr.io
+
+      - name: Login to ghcr.io
         uses: docker/login-action@v3
         if: github.actor == github.event.repository.owner.login
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      -
-        name: Buildx and Push
+
+      - name: Buildx and Push
         uses: docker/build-push-action@v5
         if: github.actor == github.event.repository.owner.login
         with:
@@ -62,16 +57,7 @@ jobs:
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           push: true
-      -
-        name: Notification
-        uses: sarisia/actions-status-discord@v1
-        if: always() && github.actor == github.event.repository.owner.login
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          description: |
-            ghcr.io/${{ env.IMAGE_NAME }}:testing
-            ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         if: failure()

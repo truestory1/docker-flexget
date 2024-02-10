@@ -29,7 +29,7 @@ docker run -d \
     -e PGID=<GID for user> \
     -e TZ=<timezone> \
     -e FG_WEBUI_PASSWD=<desired password> \
-    wiserain/flexget
+    ghcr.io/truestory1/flexget
 ```
 
 ### docker-compose
@@ -38,7 +38,7 @@ docker run -d \
 version: "3"
 services:
   flexget:
-    image: wiserain/flexget
+    image: ghcr.io/truestory1/flexget
     container_name: <container name>
     restart: on-failure:5
     ports :

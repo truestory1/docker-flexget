@@ -109,7 +109,7 @@ inflect==7.0.0
     # via
     #   flexget
     #   jaraco-text
-irc-bot==1.0.41
+irc-bot==1.0.40
     # via -r requirements.in
 itsdangerous==2.1.2
     # via
@@ -221,7 +221,7 @@ pytz==2023.3.post1
     #   tempora
 pyyaml==6.0.1
     # via flexget
-rarfile==4.1
+rarfile==4.0
     # via -r requirements.in
 rebulk==3.2.0
     # via

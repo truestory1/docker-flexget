@@ -2,5 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "ignorePaths": [
+    "requirements.txt"
+  ],
+  "pip_requirements": {
+    "fileMatch": [
+        "requirements.in"
+      ]
+    }
 }

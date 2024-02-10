@@ -1,12 +1,8 @@
 python-telegram-bot==12.8
 PySocks==1.7.1
-    # plugin: telegram
 cloudscraper==1.2.71
-    # plugin: cfscraper
 rarfile==4.0
-    # plugin: decompress
 transmission-rpc==7.0.3
 deluge-client==1.9.0
 irc-bot==1.0.40
-    # plugin: others
 flexget==3.11.14

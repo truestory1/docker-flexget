@@ -1,11 +1,13 @@
 ARG ALPINE_VER
-ARG LIBTORRENT_VER=latest
+# TODO: add renovate label here
+ARG LIBTORRENT_VER=2.0.9
 
 FROM ghcr.io/by275/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER} AS libtorrent
 FROM ghcr.io/linuxserver/baseimage-alpine:${ALPINE_VER} AS base
 
 RUN \
     echo "**** install frolvlad/alpine-python3 ****" && \
+    apk update && \
     apk add --no-cache python3 && \
     if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm /usr/lib/python*/EXTERNALLY-MANAGED && \
@@ -18,9 +20,9 @@ RUN \
         /tmp/* \
         /root/.cache
 
-# 
+#
 # BUILD
-# 
+#
 FROM alpine:${ALPINE_VER} AS unrar
 
 ARG ALPINE_VER
@@ -90,12 +92,12 @@ RUN \
     for dir in /bar/etc/s6-overlay/s6-rc.d/*; do touch "/tmp/app/contents.d/$(basename "$dir")"; done && \
     mv /tmp/app /bar/etc/s6-overlay/s6-rc.d/user
 
-# 
+#
 # RELEASE
-# 
+#
 FROM base
-LABEL maintainer="wiserain"
-LABEL org.opencontainers.image.source https://github.com/wiserain/docker-flexget
+LABEL maintainer="truestory1"
+LABEL org.opencontainers.image.source https://github.com/truestory1/docker-flexget
 
 ENV \
     TZ=Etc/UTC \

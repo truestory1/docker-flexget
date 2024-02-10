@@ -27,7 +27,7 @@ babelfish==0.6.0
     # via
     #   flexget
     #   guessit
-beautifulsoup4==4.12.2
+beautifulsoup4==4.12.3
     # via flexget
 blinker==1.7.0
     # via

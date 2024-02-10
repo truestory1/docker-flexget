@@ -1,5 +1,6 @@
 ARG ALPINE_VER
-ARG LIBTORRENT_VER=latest
+# TODO: add renovate label here
+ARG LIBTORRENT_VER=2.0.9
 
 FROM ghcr.io/by275/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER} AS libtorrent
 FROM ghcr.io/linuxserver/baseimage-alpine:${ALPINE_VER} AS base

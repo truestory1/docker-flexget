@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "includeForks": true,
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "regexManagers:dockerfileVersions"
   ],
   "ignorePaths": [
     "requirements.txt"
@@ -11,15 +12,5 @@
     "fileMatch": [
         "requirements.in"
       ]
-    },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^Dockerfile.*$"],
-      "matchStrings": [
-        "#\\srenovate:\\sdatasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s(ENV|ARG) .*?_VERSION=\"(?<currentValue>.*)\"\\s"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
-  ]
 }

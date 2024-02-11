@@ -1,4 +1,5 @@
-ARG ALPINE_VER=3.19
+# TODO: add renovate label later
+ARG ALPINE_VER
 
 # renovate: datasource=repology depName=alpine_3_19/libtorrent-rasterbar versioning=loose
 ARG LIBTORRENT_VER=2.0.9

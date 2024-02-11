@@ -12,14 +12,14 @@
         "requirements.in"
       ]
     },
-    "customManagers": [
-      {
-        "customType": "regex",
-        "fileMatch": ["^Dockerfile$"],
-        "matchStrings": [
-          "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
-        ],
-        "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-      }
-    ]
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "#\\srenovate:\\sdatasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s(ENV|ARG) .*?_VERSION=\"(?<currentValue>.*)\"\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ]
 }

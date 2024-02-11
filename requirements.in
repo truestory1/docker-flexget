@@ -4,5 +4,5 @@ cloudscraper==1.2.71
 rarfile==4.1
 transmission-rpc==7.0.3
 deluge-client==1.9.0
-irc-bot==1.0.40
+irc-bot==1.0.41
 flexget==3.11.14

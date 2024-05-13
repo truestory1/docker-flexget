@@ -2,7 +2,7 @@ python-telegram-bot==21.0.1
 PySocks==1.7.1
 cloudscraper==1.2.71
 rarfile==4.1
-transmission-rpc==7.0.3
+transmission-rpc==7.0.5
 deluge-client==1.10.2
 irc-bot==1.0.41
 flexget==3.11.27

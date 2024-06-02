@@ -6,7 +6,7 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/truestory1/flexget
-  ALPINE_VER: '3.19'
+  PLATFORMS: linux/amd64 #,linux/arm64
 
 jobs:
   buildx-on-pr:
@@ -18,7 +18,7 @@ jobs:
 
       - name: Compile requirements.txt
         run: |
-          docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
+          docker run --rm -i -v ${PWD}:/req alpine:3.19.1 \
             sh -c "apk add py3-pip build-base python3-dev libffi-dev && rm /usr/lib/python*/EXTERNALLY-MANAGED && pip install pip-tools && cd /req && pip-compile -U"
 
       - name: Set up QEMU
@@ -34,8 +34,9 @@ jobs:
           file: Dockerfile
           tags: ${{ env.IMAGE_NAME }}:testing
           platforms: linux/amd64,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
+          provenance: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Login to ghcr.io
         uses: docker/login-action@v3
@@ -55,9 +56,10 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:testing
             ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
           platforms: linux/amd64,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
+          provenance: false
           push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4

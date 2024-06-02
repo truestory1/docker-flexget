@@ -1,4 +1,4 @@
-python-telegram-bot==21.0.1
+python-telegram-bot==21.2
 PySocks==1.7.1
 cloudscraper==1.2.71
 rarfile==4.2

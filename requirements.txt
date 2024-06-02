@@ -76,13 +76,13 @@ flask==3.0.0
     #   flexget
 flask-compress==1.14
     # via flexget
-flask-cors==4.0.0
+flask-cors==4.0.1
     # via flexget
 flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.27
+flexget==3.11.35
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -138,7 +138,7 @@ jaraco-text==3.12.0
     # via
     #   flexget
     #   jaraco-collections
-jinja2==3.1.3
+jinja2==3.1.4
     # via
     #   flask
     #   flexget
@@ -235,7 +235,7 @@ referencing==0.32.0
     #   flexget
     #   jsonschema
     #   jsonschema-specifications
-requests==2.31.0
+requests==2.32.1
     # via
     #   cloudscraper
     #   flexget
@@ -305,7 +305,7 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==3.0.1
+werkzeug==3.0.3
     # via
     #   flask
     #   flask-login

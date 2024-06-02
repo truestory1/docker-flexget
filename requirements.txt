@@ -214,7 +214,7 @@ python-dateutil==2.8.2
     #   guessit
     #   pendulum
     #   time-machine
-python-telegram-bot==21.0.1
+python-telegram-bot==21.2
     # via -r requirements.in
 pytz==2023.3.post1
     # via

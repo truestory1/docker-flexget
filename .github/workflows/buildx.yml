@@ -10,7 +10,6 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/truestory1/flexget
-  ALPINE_VER: '3.19'
 
 jobs:
   buildx:
@@ -41,8 +40,6 @@ jobs:
           provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
 
       - name: Load Built Image and Get Variables
         id: vars
@@ -52,17 +49,12 @@ jobs:
             --cache-to type=gha,mode=max \
             --cache-from type=gha \
             --platform=linux/amd64 \
-            --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
             --load \
             .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
           VER_FULL=$(docker exec $CID flexget -V | sed -n 1p)
           echo "VER_FULL=$VER_FULL" >> $GITHUB_ENV
           docker rm -f $CID
-          VER_MINOR=$(echo $VER_FULL | cut -d. -f-2)
-          echo "VER_MINOR=$VER_MINOR" >> $GITHUB_ENV
-          VER_MAJOR=$(echo $VER_FULL | cut -d. -f-1)
-          echo "VER_MAJOR=$VER_MAJOR" >> $GITHUB_ENV
 
       - name: Login to ghcr.io
         uses: docker/login-action@v3
@@ -84,8 +76,6 @@ jobs:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
 
       - name: Commit requirements.txt
         uses: EndBug/add-and-commit@v9

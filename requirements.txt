@@ -12,7 +12,7 @@ annotated-types==0.6.0
     # via
     #   flexget
     #   pydantic
-anyio==4.3.0
+anyio==4.4.0
     # via httpx
 apscheduler==3.10.4
     # via flexget
@@ -224,7 +224,7 @@ pytz==2023.3.post1
     #   tempora
 pyyaml==6.0.1
     # via flexget
-rarfile==4.1
+rarfile==4.2
     # via -r requirements.in
 rebulk==3.2.0
     # via

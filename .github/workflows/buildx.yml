@@ -38,6 +38,9 @@ jobs:
           file: Dockerfile
           tags: ${{ env.IMAGE_NAME }}:testing
           platforms: linux/amd64,linux/arm64
+          provenance: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
 
@@ -46,6 +49,8 @@ jobs:
         run: |
           docker buildx build \
             -t ${{ env.IMAGE_NAME }}:testing \
+            --cache-to type=gha,mode=max \
+            --cache-from type=gha \
             --platform=linux/amd64 \
             --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
             --load \
@@ -74,16 +79,13 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
           platforms: linux/amd64,linux/arm64
+          provenance: false
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
-          push: true
 
       - name: Commit requirements.txt
         uses: EndBug/add-and-commit@v9

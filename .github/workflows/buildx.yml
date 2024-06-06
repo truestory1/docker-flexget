@@ -10,6 +10,7 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/truestory1/flexget
+  PLATFORMS: linux/amd64 #,linux/arm64
 
 jobs:
   buildx:
@@ -21,7 +22,7 @@ jobs:
 
       - name: Compile requirements.txt
         run: |
-          docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
+          docker run --rm -i -v ${PWD}:/req alpine:3.20 \
             sh -c "apk add py3-pip build-base python3-dev libffi-dev && rm /usr/lib/python*/EXTERNALLY-MANAGED && pip install pip-tools && cd /req && pip-compile -U"
 
       - name: Set up QEMU

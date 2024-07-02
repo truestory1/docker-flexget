@@ -279,7 +279,7 @@ tempora==5.5.0
     #   portend
 time-machine==2.14.2
     # via pendulum
-transmission-rpc==7.0.9
+transmission-rpc==7.0.10
     # via -r requirements.in
 typing-extensions==4.9.0
     # via

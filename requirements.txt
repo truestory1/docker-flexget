@@ -214,7 +214,7 @@ python-dateutil==2.8.2
     #   guessit
     #   pendulum
     #   time-machine
-python-telegram-bot==21.2
+python-telegram-bot==21.3
     # via -r requirements.in
 pytz==2023.3.post1
     # via
@@ -277,7 +277,7 @@ tempora==5.5.0
     # via
     #   flexget
     #   portend
-time-machine==2.14.1
+time-machine==2.14.2
     # via pendulum
 transmission-rpc==7.0.9
     # via -r requirements.in

@@ -22,7 +22,7 @@ jobs:
 
       - name: Compile requirements.txt
         run: |
-          docker run --rm -i -v ${PWD}:/req alpine:3.20 \
+          docker run --rm -i -v ${PWD}:/req alpine:3.21.0 \
             sh -c "apk add py3-pip build-base python3-dev libffi-dev && rm /usr/lib/python*/EXTERNALLY-MANAGED && pip install pip-tools && cd /req && pip-compile -U"
 
       - name: Set up QEMU

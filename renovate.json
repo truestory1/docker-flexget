@@ -1,16 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "includeForks": true,
+  "forkProcessing": "enabled",
   "extends": [
     "config:recommended",
-    "regexManagers:dockerfileVersions"
+    "customManagers:dockerfileVersions"
   ],
   "ignorePaths": [
     "requirements.txt"
   ],
   "pip_requirements": {
     "fileMatch": [
-        "requirements.in"
-      ]
-    }
+      "requirements.in"
+    ]
+  }
 }

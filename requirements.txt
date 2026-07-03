@@ -158,7 +158,7 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
-python-telegram-bot==21.8
+python-telegram-bot==22.8
     # via -r requirements.in
 pyyaml==6.0.3
     # via flexget

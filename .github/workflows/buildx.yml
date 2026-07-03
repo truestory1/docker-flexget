@@ -79,7 +79,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Commit requirements.txt
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           message: |
             Update requirements.txt

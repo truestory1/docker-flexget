@@ -1,8 +1,8 @@
 # TODO: add renovate label later
-ARG ALPINE_VER=3.20
+ARG ALPINE_VER=3.24
 
-# renovate: datasource=repology depName=alpine_3_20/libtorrent-rasterbar versioning=loose
-ARG LIBTORRENT_VER=2.0.10
+# renovate: datasource=repology depName=alpine_3_24/libtorrent-rasterbar versioning=loose
+ARG LIBTORRENT_VER=2.0.13
 
 FROM ghcr.io/by275/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER} AS libtorrent
 FROM ghcr.io/linuxserver/baseimage-alpine:${ALPINE_VER} AS base

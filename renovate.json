@@ -9,8 +9,8 @@
     "requirements.txt"
   ],
   "pip_requirements": {
-    "fileMatch": [
-      "requirements.in"
+    "managerFilePatterns": [
+      "/requirements.in/"
     ]
   }
 }

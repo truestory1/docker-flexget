@@ -34,7 +34,7 @@ cffi==2.1.1
     # via
     #   cryptography
     #   curl-cffi
-charset-normalizer==3.5.1
+charset-normalizer==3.5.2
     # via requests
 cheroot==11.1.2
     # via cherrypy
@@ -44,7 +44,7 @@ click==8.5.0
     # via flask
 cloudscraper==1.2.71
     # via -r requirements.in
-cryptography==50.0.1
+cryptography==50.0.2
     # via flexget
 curl-cffi==0.16.3
     # via flexget
@@ -69,11 +69,11 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget==3.20.13
+flexget==3.21.3
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
-guessit==3.8.0
+guessit==4.2.1
     # via flexget
 h11==0.16.0
     # via httpcore
@@ -172,7 +172,7 @@ python-telegram-bot==22.8
     # via -r requirements.in
 pyyaml==6.0.3
     # via flexget
-rarfile==4.2
+rarfile==4.5
     # via -r requirements.in
 rebulk==6.0.1
     # via
@@ -214,7 +214,7 @@ sqlalchemy==2.1.1
     # via flexget
 tempora==5.12.0
     # via portend
-transmission-rpc==7.0.11
+transmission-rpc==7.0.12
     # via -r requirements.in
 typer==0.27.2
     # via typer-slim
